@@ -24,6 +24,9 @@ fi
 SECRET_KEY_BASE=$(cat "$CFGD/base")
 export SECRET_KEY_BASE
 
+# Maybe???
+mix ecto.create
+
 (cd assets && npm install)
 (cd assets && webpack --mode production)
 mix phx.digest
