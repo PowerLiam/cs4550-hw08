@@ -3,9 +3,9 @@ defmodule Events.Repo.Migrations.CreateEvents do
 
   def change do
     create table(:events) do
-      add :name, :text
-      add :date, :utc_datetime
-      add :description, :text
+      add :name, :text, null: false
+      add :date, :utc_datetime, null: false
+      add :description, :text, null: false
 
       timestamps()
     end
