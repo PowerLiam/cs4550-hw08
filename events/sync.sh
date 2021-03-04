@@ -2,4 +2,4 @@
 
 git pull
 ./deploy.sh
-sudo systemctl restart hw06
+sudo systemctl restart hw07
