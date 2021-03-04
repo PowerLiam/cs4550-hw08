@@ -1,0 +1,18 @@
+[Unit]
+Description=HW07 Elixir Events
+
+[Service]
+Type=simple
+User=hw04
+Group=hw04
+Restart=on-failure
+Environment=MIX_ENV=prod
+Environment=PORT=4793
+Environment=PROD=true
+Environment=LANG=en_US.UTF-8
+
+WorkingDirectory=/home/hw04/cs4550-hw07/events
+ExecStart=/bin/bash /home/hw04/cs4550-hw07/events/start.sh
+
+[Install]
+WantedBy=multi-user.target
