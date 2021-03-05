@@ -25,7 +25,9 @@ defmodule EventsWeb.EventController do
     IO.puts("new")
     changeset = Users.change_event(%Event{})
     IO.inspect(changeset)
-    render(conn, "new.html", changeset: changeset)
+    ret = render(conn, "new.html", changeset: changeset)
+    IO.puts("done new render")
+    ret
   end
 
   def create(conn, %{"event" => event_params}) do
