@@ -13,7 +13,7 @@ defmodule Events.Admin.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:name, :password])
-    |> validate_required([:name, :password])
+    |> cast(attrs, [:name, :email, :password])
+    |> validate_required([:name, :email, :password])
   end
 end
