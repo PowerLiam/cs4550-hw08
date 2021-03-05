@@ -5,7 +5,7 @@
 </div>
 
 <div class="row">
-  <%= for post <- @posts do %>
+  <%= for event <- @events do %>
     <div class="col-sm-4 card">
       <div class="card-body">
         <p class="card-text"><%= event.name %></p>
