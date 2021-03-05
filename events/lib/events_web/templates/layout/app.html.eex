@@ -12,8 +12,7 @@
     <div role="main" class="container">
       <div class="row">
         <div class="col">
-          <%= link("Home", to: Routes.page_path(@conn, :index),
-              method: :delete) %>
+          <%= link("Home", to: Routes.page_path(@conn, :index)) %>
         </div>
       </div>
       <div class="row">
@@ -25,8 +24,8 @@
         <%= if @conn.assigns[:current_user] do %>
           <div class="col">
             User: <%= @current_user.name %> |
-            <%= link("Logout", to: Routes.session_path(@conn, :get),
-              method: :get) %>
+            <%= link("Logout", to: Routes.session_path(@conn, :delete),
+              method: :delete) %>
           </div>
         <% else %>
           <div class="col">
