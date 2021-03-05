@@ -4,7 +4,7 @@ defmodule Events.Admin.User do
 
   schema "users" do
     field :name, :string
-    field :email :string
+    field :email, :string
     field :password, :string
 
     timestamps()
