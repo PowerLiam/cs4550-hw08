@@ -7,6 +7,7 @@ defmodule EventsWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug PhotoBlogWeb.Plugs.FetchSession
   end
 
   pipeline :api do
@@ -20,6 +21,8 @@ defmodule EventsWeb.Router do
     resources "/events", EventController
     resources "/users", UserController
     get "/users/:id/event", EventController, :event
+    resources "/sessions", SessionController, 
+      only: [:create, :delete], singleton: true
   end
 
   # Other scopes may use custom stacks.
