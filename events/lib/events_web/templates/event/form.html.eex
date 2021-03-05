@@ -13,7 +13,7 @@
 
   <div class="form-group">
     <%= label f, :date %>
-    <%= datetime_select f, :date %>
+    <%= text_input f, :date, class: "eventDatePicker" %>
     <%= error_tag f, :date %>
   </div>
 
