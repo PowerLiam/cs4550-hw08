@@ -28,7 +28,7 @@ defmodule EventsWeb.EventController do
     try do
       render(conn, "new.html", changeset: changeset)
     rescue
-      ArgumentError err -> 
+      err in ArgumentError -> 
         IO.puts(Exception.format(:error, err, __STACKTRACE__))
         err
     end
