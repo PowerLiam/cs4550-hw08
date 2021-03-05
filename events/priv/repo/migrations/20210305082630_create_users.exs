@@ -3,8 +3,8 @@ defmodule Events.Repo.Migrations.CreateUsers do
 
   def change do
     create table(:users) do
-      add :name, :string
-      add :password, :string
+      add :name, :string, null: false
+      add :password, :string, null: false, default: ""
 
       timestamps()
     end
