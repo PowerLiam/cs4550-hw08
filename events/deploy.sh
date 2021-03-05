@@ -24,7 +24,6 @@ fi
 SECRET_KEY_BASE=$(cat "$CFGD/base")
 export SECRET_KEY_BASE
 
-# Maybe???
 mix ecto.create
 mix ecto.migrate
 
