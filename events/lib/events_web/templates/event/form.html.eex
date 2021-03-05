@@ -5,19 +5,25 @@
     </div>
   <% end %>
 
-  <%= label f, :name %>
-  <%= textarea f, :name %>
-  <%= error_tag f, :name %>
+  <div class="form-group">
+    <%= label f, :name %>
+    <%= textarea f, :name %>
+    <%= error_tag f, :name %>
+  </div>
 
-  <%= label f, :date %>
-  <%= datetime_select f, :date %>
-  <%= error_tag f, :date %>
+  <div class="form-group">
+    <%= label f, :date %>
+    <%= datetime_select f, :date %>
+    <%= error_tag f, :date %>
+  </div>
 
-  <%= label f, :description %>
-  <%= textarea f, :description %>
-  <%= error_tag f, :description %>
+  <div class="form-group">
+    <%= label f, :description %>
+    <%= textarea f, :description %>
+    <%= error_tag f, :description %>
+  </div>
 
   <div>
-    <%= submit "Save" %>
+    <%= submit "Save", class: "btn btn-primary"  %>
   </div>
 <% end %>

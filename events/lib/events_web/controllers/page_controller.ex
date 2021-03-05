@@ -1,7 +1,10 @@
 defmodule EventsWeb.PageController do
   use EventsWeb, :controller
 
+  alias Events.Users
+
   def index(conn, _params) do
-    render(conn, "index.html")
+    events = Users.list_events()
+    render(conn, "index.html", events: events)
   end
 end
