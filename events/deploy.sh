@@ -26,6 +26,7 @@ export SECRET_KEY_BASE
 
 # Maybe???
 mix ecto.create
+mix ecto.migrate
 
 (cd assets && npm install)
 (cd assets && webpack --mode production)
