@@ -4,6 +4,18 @@ defmodule EventsWeb.EventController do
   alias Events.Users
   alias Events.Users.Event
 
+  alias EventsWeb.Plugs
+  # plug Plugs.RequireUser when action not in [
+  #  :index, :show, :photo] TODO
+  plug :fetch_event when action in [
+    :show, :photo, :edit, :update, :delete]
+
+  def fetch_event(conn, _args) do
+    id = conn.params["id"]
+    event = Users.get_event!(id)
+    assign(conn, :event, event)
+  end
+
   def index(conn, _params) do
     events = Users.list_events()
     render(conn, "index.html", events: events)
