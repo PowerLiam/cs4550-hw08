@@ -3,7 +3,7 @@
   <span><%= link "Back", to: Routes.event_path(@conn, :index) %></span>
 </p>
 
-<h1>Show Post #<%= @event.id %></h1>
+<h1>Show Event #<%= @event.id %></h1>
 
 <ul>
 
