@@ -1,5 +1,5 @@
 
-Web Dev Spring 2021 HW07 Status
+Web Dev Spring 2021 HW08 Status
 
 Answer the following questions:
 
@@ -10,11 +10,11 @@ Liam Brown
 
 2. What's the URL of the github repo with your work for this HW?
 
-https://github.com/PowerLiam/cs4550-hw07
+https://github.com/PowerLiam/cs4550-hw08
 
 3. What's the URL that you deployed to?
 
-hw07.lnbtech.us
+hw08.lnbtech.us
 
 4. Is your app functionality complete? If not, what's missing?
 
