@@ -8,8 +8,8 @@ export PATH="$PATH:$NODEBIN"
 
 echo "Building..."
 
-# mix deps.get --only prod
-# mix compile
+mix deps.get --only prod
+mix compile
 
 CFGD=$(readlink -f ~/.config/events)
 
@@ -24,7 +24,6 @@ fi
 SECRET_KEY_BASE=$(cat "$CFGD/base")
 export SECRET_KEY_BASE
 
-mix ecto.reset
 mix ecto.create
 mix ecto.migrate
 
