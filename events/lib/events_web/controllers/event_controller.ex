@@ -47,7 +47,7 @@ defmodule EventsWeb.EventController do
   end
 
   def create(conn, %{"event" => event_params}) do
-    post_params = post_params
+    event_params = event_params
     |> Map.put("user_id", conn.assigns[:current_user].id)
 
     case Users.create_event(event_params) do
@@ -61,18 +61,18 @@ defmodule EventsWeb.EventController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
+  def show(conn, %{"id" => _id}) do
     event = conn.assigns[:event]
     render(conn, "show.html", event: event)
   end
 
-  def edit(conn, %{"id" => id}) do
+  def edit(conn, %{"id" => _id}) do
     event = conn.assigns[:event]
     changeset = Users.change_event(event)
     render(conn, "edit.html", event: event, changeset: changeset)
   end
 
-  def update(conn, %{"id" => id, "event" => event_params}) do
+  def update(conn, %{"id" => _id, "event" => event_params}) do
     event = conn.assigns[:event]
 
     case Users.update_event(event, event_params) do
@@ -86,7 +86,7 @@ defmodule EventsWeb.EventController do
     end
   end
 
-  def delete(conn, %{"id" => id}) do
+  def delete(conn, %{"id" => _id}) do
     event = conn.assigns[:event]
     {:ok, _event} = Users.delete_event(event)
 
