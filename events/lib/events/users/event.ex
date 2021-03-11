@@ -15,6 +15,6 @@ defmodule Events.Users.Event do
   def changeset(event, attrs) do
     event
     |> cast(attrs, [:name, :date, :description, :user_id])
-    |> validate_required([:name, :date, :description, user_id])
+    |> validate_required([:name, :date, :description, :user_id])
   end
 end
