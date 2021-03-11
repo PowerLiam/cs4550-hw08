@@ -6,7 +6,7 @@ defmodule Events.Admin.User do
     field :name, :string
     field :email, :string
     field :password, :string
-    has_many :events, Events.Users.Post
+    has_many :events, Events.Users.Event
 
     timestamps()
   end
