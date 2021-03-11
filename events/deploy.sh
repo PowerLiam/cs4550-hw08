@@ -8,8 +8,8 @@ export PATH="$PATH:$NODEBIN"
 
 echo "Building..."
 
-mix deps.get --only prod
-mix compile
+# mix deps.get --only prod
+# mix compile
 
 CFGD=$(readlink -f ~/.config/events)
 
