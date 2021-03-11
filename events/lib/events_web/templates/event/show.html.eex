@@ -1,5 +1,7 @@
 <p>
-  <span><%= link "Edit", to: Routes.event_path(@conn, :edit, @event) %></span>
+  <%= if current_user_id?(@conn, @event.user_id) do %>
+    <span><%= link "Edit", to: Routes.post_path(@conn, :edit, @event) %></span>
+  <% end %>
   <span><%= link "Back", to: Routes.event_path(@conn, :index) %></span>
 </p>
 
@@ -20,6 +22,11 @@
   <li>
     <strong>Description:</strong>
     <%= @event.description %>
+  </li>
+
+  <li>
+    <strong>Created by:</strong>
+    <%= @event.user.name %>
   </li>
 
 </ul>

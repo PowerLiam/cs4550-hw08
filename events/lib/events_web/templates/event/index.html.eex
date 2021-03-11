@@ -6,6 +6,7 @@
       <th>Name</th>
       <th>Date</th>
       <th>Description</th>
+      <th>Created by</th>
 
       <th></th>
     </tr>
@@ -16,10 +17,13 @@
       <td><%= event.name %></td>
       <td><%= event.date %></td>
       <td><%= event.description %></td>
+      <td><%= event.user.name %></td>
 
       <td>
         <span><%= link "Show", to: Routes.event_path(@conn, :show, event) %></span>
-        <span><%= link "Edit", to: Routes.event_path(@conn, :edit, event) %></span>
+        <%= if current_user_id?(@conn, event.user_id) do %>
+          <span><%= link "Edit", to: Routes.post_path(@conn, :edit, event) %></span>
+        <% end %>
         <span><%= link "Delete", to: Routes.event_path(@conn, :delete, event), method: :delete, data: [confirm: "Are you sure?"] %></span>
       </td>
     </tr>
@@ -27,4 +31,6 @@
   </tbody>
 </table>
 
-<span><%= link "New Event", to: Routes.event_path(@conn, :new) %></span>
+<%= if have_current_user?(@conn) do %>
+  <span><%= link "New Event", to: Routes.event_path(@conn, :new) %></span>
+<% end %>
