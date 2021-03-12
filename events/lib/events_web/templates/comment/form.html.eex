@@ -5,11 +5,16 @@
     </div>
   <% end %>
 
-  <%= label f, :body %>
-  <%= textarea f, :body %>
-  <%= error_tag f, :body %>
+  <div class="form-group">
+    <%= label f, :body %>
+    <%= textarea f, :body %>
+    <%= error_tag f, :body %>
+  </div>
 
-  <div>
+  <%= hidden_input f, :event_id %>
+  <%= hidden_input f, :user_id %>
+
+  <div class="form-control">
     <%= submit "Save" %>
   </div>
 <% end %>

@@ -63,7 +63,14 @@ defmodule EventsWeb.EventController do
 
   def show(conn, %{"id" => _id}) do
     event = conn.assigns[:event]
-    render(conn, "show.html", event: event)
+    |> Users.load_comments()
+    comm = %Comments.Comment{
+      event_id: event.id,
+      user_id: current_user_id(conn),
+    }
+    new_comment = Comments.change_comment(comm)
+
+    render(conn, "show.html", event: event, new_comment: new_comment)
   end
 
   def edit(conn, %{"id" => _id}) do

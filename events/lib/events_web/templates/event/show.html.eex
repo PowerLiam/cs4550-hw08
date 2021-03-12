@@ -29,5 +29,31 @@
     <%= @event.user.name %>
   </li>
 
+  <h2>Add Comment</h2>
+
+  <%= if have_current_user?(@conn) do %>
+    <%= render(
+      Events.CommentView,
+      "form.html",
+      changeset: @new_comment,
+      action: Routes.comment_path(@conn, :create)
+    ) %>
+  <% end %>
+
+  <%= if !have_current_user?(@conn) do %>
+    <h3>You must be signed in to add a comment.</h3>
+  <% end %>
+
+  <h2>Comments</h2>
+
+  <%= for comm <- @post.comments do %>
+    <div class="card">
+      <div class="card-body">
+        <p>Posted by <%= comm.user.name %></p>
+        <p class="card-text"><%= comm.body %></p>
+      </div>
+    </div>
+  <% end %>
+
 </ul>
 
