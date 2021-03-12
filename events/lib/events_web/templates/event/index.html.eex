@@ -23,8 +23,8 @@
         <span><%= link "Show", to: Routes.event_path(@conn, :show, event) %></span>
         <%= if current_user_id?(@conn, event.user_id) do %>
           <span><%= link "Edit", to: Routes.event_path(@conn, :edit, event) %></span>
+          <span><%= link "Delete", to: Routes.event_path(@conn, :delete, event), method: :delete, data: [confirm: "Are you sure?"] %></span>
         <% end %>
-        <span><%= link "Delete", to: Routes.event_path(@conn, :delete, event), method: :delete, data: [confirm: "Are you sure?"] %></span>
       </td>
     </tr>
 <% end %>

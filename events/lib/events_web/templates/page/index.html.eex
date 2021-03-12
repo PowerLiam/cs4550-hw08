@@ -13,18 +13,20 @@
 </div>
 
 <div class="row">
-  <h1>Events Feed</h1>
-  <%= if have_current_user?(@conn) do %>
-    <span><%= link "New Event", to: Routes.event_path(@conn, :new) %></span>
-  <% end %>
-  <%= for event <- @events do %>
-    <div class="col-sm-4 card">
-      <div class="card-body">
-        <p class="card-text"><%= event.name %></p>
-        <%= link "view", to: Routes.event_path(@conn, :show, event) %>
+  <div class="col">
+    <h1>Events Feed</h1>
+    <%= if have_current_user?(@conn) do %>
+      <span><%= link "New Event", to: Routes.event_path(@conn, :new) %></span>
+    <% end %>
+    <%= for event <- @events do %>
+      <div class="col-sm-4 card">
+        <div class="card-body">
+          <p class="card-text"><%= event.name %></p>
+          <%= link "view", to: Routes.event_path(@conn, :show, event) %>
+        </div>
+        <div class="card-body">
+          <p>Created by <%= event.user.name %></p>
       </div>
-      <div class="card-body">
-        <p>Created by <%= event.user.name %></p>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
