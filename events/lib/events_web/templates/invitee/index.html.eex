@@ -1,0 +1,24 @@
+<h1>Listing Invites</h1>
+
+<table>
+  <thead>
+    <tr>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for invitee <- @invites do %>
+    <tr>
+
+      <td>
+        <span><%= link "Show", to: Routes.invitee_path(@conn, :show, invitee) %></span>
+        <span><%= link "Edit", to: Routes.invitee_path(@conn, :edit, invitee) %></span>
+        <span><%= link "Delete", to: Routes.invitee_path(@conn, :delete, invitee), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Invitee", to: Routes.invitee_path(@conn, :new) %></span>
