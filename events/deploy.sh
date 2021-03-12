@@ -26,7 +26,6 @@ export SECRET_KEY_BASE
 
 mix ecto.create
 mix ecto.migrate
-mix run priv/repo/seeds.exs
 
 (cd assets && npm install)
 (cd assets && webpack --mode production)
