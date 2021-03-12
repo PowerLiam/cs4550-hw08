@@ -68,7 +68,7 @@ defmodule EventsWeb.EventController do
       event_id: event.id,
       user_id: current_user_id(conn),
     }
-    new_comment = Comments.change_comment(comm)
+    new_comment = Events.Comments.change_comment(comm)
 
     render(conn, "show.html", event: event, new_comment: new_comment)
   end
