@@ -33,7 +33,7 @@
 
   <%= if have_current_user?(@conn) do %>
     <%= render(
-      Events.CommentView,
+      EventsWeb.CommentView,
       "form.html",
       changeset: @new_comment,
       action: Routes.comment_path(@conn, :create)
