@@ -46,7 +46,7 @@
 
   <h2>Comments</h2>
 
-  <%= for comm <- @post.comments do %>
+  <%= for comm <- @event.comments do %>
     <div class="card">
       <div class="card-body">
         <p>Posted by <%= comm.user.name %></p>
