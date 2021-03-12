@@ -20,6 +20,7 @@ defmodule Events.Users do
   def list_events do
     Repo.all(Event)
     |> Repo.preload(:user)
+    |> Repo.preload([comments: :user])
   end
 
   def load_comments(%Event{} = event) do
@@ -40,7 +41,7 @@ defmodule Events.Users do
       ** (Ecto.NoResultsError)
 
   """
-  def get_event!(id), do: Repo.get!(Event, id) |> Repo.preload(:user)
+  def get_event!(id), do: Repo.get!(Event, id) |> Repo.preload(:user) |> Repo.preload([comments: :user])
 
   @doc """
   Creates a event.
