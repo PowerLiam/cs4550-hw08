@@ -47,10 +47,8 @@ defmodule EventsWeb.EventController do
   end
 
   def create(conn, %{"event" => event_params}) do
-    IO.puts("creating event")
     event_params = event_params
     |> Map.put("user_id", conn.assigns[:current_user].id)
-    IO.puts("added user id param")
 
     case Users.create_event(event_params) do
       {:ok, event} ->
