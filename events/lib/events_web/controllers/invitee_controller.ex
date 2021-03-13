@@ -63,7 +63,7 @@ defmodule EventsWeb.InviteeController do
         invited_user &&
         event.user_id == current_user_id &&
         !MapSet.member?(MapSet.new(invitee_user_ids), invited_user) &&
-        current_user_id != invited_user_id
+        current_user_id != invited_user.id
 
       if valid do
         case Invitees.create_invitee(invitee_params) do
