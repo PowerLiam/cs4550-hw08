@@ -43,39 +43,43 @@ defmodule EventsWeb.InviteeController do
   end
 
   def create(conn, %{"invitee" => invitee_params}) do
-    event_id = invitee_params["event_id"]
-    event = Users.get_event!(event_id)
+    try do
+      event_id = invitee_params["event_id"]
+      event = Users.get_event!(event_id)
 
-    invited_user_id = invitee_params["invited_user_id"]
-    invited_user = Admin.get_user!(invited_user_id)
+      invited_user_id = invitee_params["invited_user_id"]
+      invited_user = Admin.get_user!(invited_user_id)
 
-    invitees_for_event = Invitees.list_invitees_for_event(event)
-    invitee_user_ids = Enum.map(invitees_for_event, fn (invitee) -> invitee.user.id end)
+      invitees_for_event = Invitees.list_invitees_for_event(event)
+      invitee_user_ids = Enum.map(invitees_for_event, fn (invitee) -> invitee.user.id end)
 
-    current_user_id = conn.assigns[:current_user].id
+      current_user_id = conn.assigns[:current_user].id
 
-    valid = 
-      event && 
-      invited_user &&
-      event.user_id == current_user_id &&
-      !MapSet.member?(MapSet.new(invitee_user_ids), invited_user) &&
-      current_user_id != invited_user_id
+      valid = 
+        event && 
+        invited_user &&
+        event.user_id == current_user_id &&
+        !MapSet.member?(MapSet.new(invitee_user_ids), invited_user) &&
+        current_user_id != invited_user_id
 
-    if valid do
-      case Invitees.create_invitee(invitee_params) do
-        {:ok, invitee} ->
-          conn
-          |> put_flash(:info, "Invitee created successfully.")
-          |> redirect(to: Routes.invitee_path(conn, :show, invitee))
+      if valid do
+        case Invitees.create_invitee(invitee_params) do
+          {:ok, invitee} ->
+            conn
+            |> put_flash(:info, "Invitee created successfully.")
+            |> redirect(to: Routes.invitee_path(conn, :show, invitee))
 
-        {:error, %Ecto.Changeset{} = changeset} ->
-          render(conn, "new.html", changeset: changeset)
+          {:error, %Ecto.Changeset{} = changeset} ->
+            render(conn, "new.html", changeset: changeset)
+        end
+      else 
+        case Invitees.create_invitee(invitee_params) do
+          {:error, %Ecto.Changeset{} = changeset} ->
+            render(conn, "new.html", changeset: changeset)
+        end
       end
-    else 
-      case Invitees.create_invitee(invitee_params) do
-        {:error, %Ecto.Changeset{} = changeset} ->
-          render(conn, "new.html", changeset: changeset)
-      end
+    rescue
+      e in ArgumentError -> IO.inspect(e)
     end
   end
 
