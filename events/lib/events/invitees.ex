@@ -22,7 +22,7 @@ defmodule Events.Invitees do
   end
 
   def list_invitees_for_event(event) do
-    Repo.all(from(i in Invitee, where: i.event.id == ^event.id)) |> Repo.preload([:user, :event])
+    Repo.all(from(i in Invitee, where: i.event_id == ^event.id)) |> Repo.preload([:user, :event])
   end
 
   @doc """
