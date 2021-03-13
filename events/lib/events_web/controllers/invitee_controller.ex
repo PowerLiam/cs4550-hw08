@@ -67,8 +67,6 @@ defmodule EventsWeb.InviteeController do
         !MapSet.member?(MapSet.new(invitee_user_ids), invited_user) &&
         current_user_id != invited_user.id
 
-        IO.puts(event)
-        IO.puts(invited_user)
         IO.puts(event.user_id == current_user_id)
         IO.puts(!MapSet.member?(MapSet.new(invitee_user_ids), invited_user))
         IO.puts(current_user_id != invited_user.id)
