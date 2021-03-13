@@ -55,6 +55,19 @@
     </div>
   <% end %>
 
+  <%= if have_current_user?(@conn) do %>
+    <%= render(
+      EventsWeb.InviteeView,
+      "form.html",
+      changeset: @new_invitee,
+      action: Routes.invitee_path(@conn, :create)
+    ) %>
+  <% end %>
+
+  <%= if !have_current_user?(@conn) do %>
+    <h3>You must be signed in and own this event to create an invite</h3>
+  <% end %>
+
   <h2>Invites</h2>
 
   <%= for inv <- @event.invitees do %>
