@@ -55,5 +55,15 @@
     </div>
   <% end %>
 
+  <h2>Invites</h2>
+
+  <%= for inv <- @event.invitees do %>
+    <div class="card">
+      <div class="card-body">
+        <p>Invitee: <%= inv.invited_user.name %></p>
+      </div>
+    </div>
+  <% end %>
+
 </ul>
 
