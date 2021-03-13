@@ -35,7 +35,7 @@ defmodule Events.Invitees do
       ** (Ecto.NoResultsError)
 
   """
-  def get_invitee!(id), do: Repo.get!(Invitee, id) |> Repo.preload([:user, :source_user, :event]
+  def get_invitee!(id), do: Repo.get!(Invitee, id) |> Repo.preload([:user, :source_user, :event])
 
   @doc """
   Creates a invitee.
