@@ -20,7 +20,7 @@ defmodule EventsWeb.InviteeController do
     user = conn.assigns[:current_user]
     invitee = conn.assigns[:invitee]
 
-    if user.id == invitee.user_id do
+    if user.id == invitee.user.id do
       conn
     else
       conn
@@ -55,7 +55,7 @@ defmodule EventsWeb.InviteeController do
     valid = 
       event && 
       invited_user &&
-      event.user_id == current_user_id &&
+      event.user.id == current_user_id &&
       !MapSet.member?(MapSet.new(invitee_user_ids), invited_user) &&
       current_user_id != invited_user_id
 
