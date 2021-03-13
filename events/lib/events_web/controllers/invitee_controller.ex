@@ -60,6 +60,12 @@ defmodule EventsWeb.InviteeController do
 
       current_user_id = conn.assigns[:current_user].id
 
+      invitee_true_params = %{
+        event_id: invitee_params["event_id"]
+        user_id: invitee_params["user_id"]
+        invited_user_id: invited_user.id
+      }
+
       valid = 
         event && 
         invited_user &&
@@ -72,7 +78,7 @@ defmodule EventsWeb.InviteeController do
         IO.puts(current_user_id != invited_user.id)
 
       if valid do
-        case Invitees.create_invitee(invitee_params) do
+        case Invitees.create_invitee(invitee_true_params) do
           {:ok, invitee} ->
             conn
             |> put_flash(:info, "Invitee created successfully.")
@@ -82,7 +88,7 @@ defmodule EventsWeb.InviteeController do
             render(conn, "new.html", changeset: changeset)
         end
       else 
-        case Invitees.create_invitee(invitee_params) do
+        case Invitees.create_invitee(invitee_true_params) do
           {:error, %Ecto.Changeset{} = changeset} ->
             render(conn, "new.html", changeset: changeset)
         end
