@@ -85,7 +85,7 @@ defmodule EventsWeb.InviteeController do
             render(conn, "new.html", changeset: changeset)
         end
       else 
-        render(conn, "new.html", %Ecto.Changeset{})
+        render(conn, "new.html", %{})
       end
     rescue
       err ->
