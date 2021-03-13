@@ -20,7 +20,7 @@ defmodule EventsWeb.InviteeController do
     user = conn.assigns[:current_user]
     invitee = conn.assigns[:invitee]
 
-    if user.id == invitee.user.id do
+    if user.id == invitee.user_id do
       conn
     else
       conn
@@ -45,7 +45,7 @@ defmodule EventsWeb.InviteeController do
     event = Users.get_event!(event_id)
 
     invited_user_id = invitee_params["invited_user_id"]
-    invited_user = Admin.get_user!(user_id)
+    invited_user = Admin.get_user!(invited_user_id)
 
     invitees_for_event = Invitees.list_invitees_for_event(event)
     invitee_user_ids = Enum.map(fn (invitee) -> invitee.user.id end)
@@ -55,7 +55,7 @@ defmodule EventsWeb.InviteeController do
     valid = 
       event && 
       invited_user &&
-      event.user.id == current_user_id &&
+      event.user_id == current_user_id &&
       !MapSet.member?(MapSet.new(invitee_user_ids), invited_user) &&
       current_user_id != invited_user_id
 
