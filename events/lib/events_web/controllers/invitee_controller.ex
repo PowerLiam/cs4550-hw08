@@ -44,11 +44,14 @@ defmodule EventsWeb.InviteeController do
 
   def create(conn, %{"invitee" => invitee_params}) do
     try do
+
+      IO.inspect(invitee_params)
+
       event_id = invitee_params["event_id"]
       event = Users.get_event!(event_id)
 
-      invited_user_id = invitee_params["invited_user_id"]
-      invited_user = Admin.get_user!(invited_user_id)
+      invited_user_name = invitee_params["invitee_name"]
+      invited_user = Admin.get_user_by_name(invited_user_name)
 
       invitees_for_event = Invitees.list_invitees_for_event(event)
       invitee_user_ids = Enum.map(invitees_for_event, fn (invitee) -> invitee.user.id end)

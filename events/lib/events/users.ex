@@ -53,6 +53,11 @@ defmodule Events.Users do
     Repo.preload([:user, [comments: :user], [invitees: :user]])
   end
 
+  def get_event_by_name!(name) do 
+    Repo.get_by!(Event, name: name) |> 
+    Repo.preload([:user, [comments: :user], [invitees: :user]])
+  end
+
   @doc """
   Creates a event.
 
