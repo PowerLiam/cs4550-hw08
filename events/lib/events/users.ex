@@ -21,7 +21,7 @@ defmodule Events.Users do
     Repo.all(Event)
     |> Repo.preload(:user)
     |> Repo.preload([comments: :user])
-    |> Repo.preload([invitees: [:user, :source_user]])
+    |> Repo.preload([invitees: [:user]])
   end
 
   def load_comments(%Event{} = event) do
@@ -29,7 +29,7 @@ defmodule Events.Users do
   end
 
   def load_invitees(%Event{} = event) do
-    Repo.preload(event, [invitees: [:user, :source_user]])
+    Repo.preload(event, [invitees: [:user]])
   end
 
   @doc """
@@ -50,7 +50,7 @@ defmodule Events.Users do
     Repo.get!(Event, id) |> 
     Repo.preload(:user) |> 
     Repo.preload([comments: :user]) |> 
-    Repo.preload([invitees: [:user, :source_user]])
+    Repo.preload([invitees: [:user]])
   end
 
   @doc """

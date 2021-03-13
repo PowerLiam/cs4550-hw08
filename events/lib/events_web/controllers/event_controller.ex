@@ -74,7 +74,7 @@ defmodule EventsWeb.EventController do
 
     invitee = %Events.Invitees.Invitee{
       event_id: event.id,
-      source_user_id: current_user_id(conn),
+      user_id: current_user_id(conn),
     }
     new_invitee = Events.Invitees.change_invitee(invitee)
 
