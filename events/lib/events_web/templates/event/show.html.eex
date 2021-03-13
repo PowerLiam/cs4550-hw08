@@ -55,6 +55,8 @@
     </div>
   <% end %>
 
+  <h2>Add Invite</h2>
+
   <%= if have_current_user?(@conn) do %>
     <%= render(
       EventsWeb.InviteeView,
