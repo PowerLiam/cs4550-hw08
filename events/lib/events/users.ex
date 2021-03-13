@@ -18,8 +18,12 @@ defmodule Events.Users do
 
   """
   def list_events do
-    Repo.all(Event)
-    |> Repo.preload([:user, [comments: :user], [invitees: :user]])
+    try do
+      Repo.all(Event)
+      |> Repo.preload([:user, [comments: :user], [invitees: :user]])
+    rescue
+      e in ArgumentError -> IO.inspect(e)
+    end
   end
 
   def load_comments(%Event{} = event) do
