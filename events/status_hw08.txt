@@ -18,19 +18,17 @@ hw08.lnbtech.us
 
 4. Is your app functionality complete? If not, what's missing?
 
-I believe so, you can create edit and delete users and events, 
-users can login and logout through session creation and destruction.
+No, responses are not implemented at all, and invitees have subtle bugs.
 
 5. Is your app properly deployed? If not, what went wrong?
 
-I believe so.
-
-6. If you would like the deployment for an old homework to be reconsidered, what
-are the links to your Inkfish submission and deployed site?
+Yes.
 
 
 
 And here's a list of tasks for grading comments. Just leave this here:
  - Development
  - Deployment
+ - Submission
+
  - Submission

@@ -44,6 +44,8 @@ defmodule EventsWeb.InviteeController do
 
   def create(conn, %{"invitee" => invitee_params}) do
     try do
+      invitee_params = invitee_params
+        |> Map.put("user_id", current_user_id(conn))
 
       IO.inspect(invitee_params)
 
@@ -64,6 +66,12 @@ defmodule EventsWeb.InviteeController do
         event.user_id == current_user_id &&
         !MapSet.member?(MapSet.new(invitee_user_ids), invited_user) &&
         current_user_id != invited_user.id
+
+        IO.puts(event)
+        IO.puts(invited_user)
+        IO.puts(event.user_id == current_user_id)
+        IO.puts(!MapSet.member?(MapSet.new(invitee_user_ids), invited_user))
+        IO.puts(current_user_id != invited_user.id)
 
       if valid do
         case Invitees.create_invitee(invitee_params) do
