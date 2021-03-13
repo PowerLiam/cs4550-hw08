@@ -21,6 +21,12 @@ defmodule Events.Invitees do
     Repo.all(Invitee) |> Repo.preload([:user, :event])
   end
 
+  def list_invitees_for_event(event) do
+    query = from i in Invitee,
+      where: i.event_id == event.id
+    Repo.all(query) |> Repo.preload([:user, :event])
+  end
+
   @doc """
   Gets a single invitee.
 
