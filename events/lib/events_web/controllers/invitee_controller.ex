@@ -61,9 +61,9 @@ defmodule EventsWeb.InviteeController do
       current_user_id = conn.assigns[:current_user].id
 
       invitee_true_params = %{
-        event_id: invitee_params["event_id"]
-        user_id: invitee_params["user_id"]
-        invited_user_id: invited_user.id
+        "event_id": invitee_params["event_id"],
+        "user_id": invitee_params["user_id"],
+        "invited_user_id": invited_user.id,
       }
 
       valid = 
