@@ -79,16 +79,13 @@ defmodule EventsWeb.InviteeController do
           {:ok, invitee} ->
             conn
             |> put_flash(:info, "Invitee created successfully.")
-            |> redirect(to: Routes.invitee_path(conn, :show, invitee))
+            |> redirect(to: Routes.event_path(conn, :show, event))
 
           {:error, %Ecto.Changeset{} = changeset} ->
             render(conn, "new.html", changeset: changeset)
         end
       else 
-        case Invitees.create_invitee(invitee_params) do
-          {:error, %Ecto.Changeset{} = changeset} ->
-            render(conn, "new.html", changeset: changeset)
-        end
+        render(conn, "new.html", %Ecto.Changeset{})
       end
     rescue
       err ->
