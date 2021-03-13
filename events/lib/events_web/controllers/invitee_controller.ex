@@ -48,7 +48,7 @@ defmodule EventsWeb.InviteeController do
     invited_user = Admin.get_user!(user_id)
 
     invitees_for_event = Invitees.list_invitees_for_event(event)
-    invitee_user_ids = Enum.map((invitee) -> invitee.user.id)
+    invitee_user_ids = Enum.map(fn (invitee) do invitee.user.id end)
 
     current_user_id = conn.assigns[:current_user].id
 
