@@ -50,7 +50,7 @@ defmodule Events.Users do
   """
   def get_event!(id) do 
     Repo.get!(Event, id) |> 
-    Repo.preload(:user, [comments: :user], [invitees: :user])
+    Repo.preload([:user, [comments: :user], [invitees: :user]])
   end
 
   @doc """
