@@ -8,7 +8,6 @@ defmodule Events.Admin.User do
     field :password, :string
     has_many :events, Events.Users.Event
     has_many :comments, Events.Comments.Comment
-    has_many :invitees, Events.Invitees.Invitee
 
     timestamps()
   end
