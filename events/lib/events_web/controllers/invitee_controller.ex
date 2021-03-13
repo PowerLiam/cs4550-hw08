@@ -20,7 +20,7 @@ defmodule EventsWeb.InviteeController do
     user = conn.assigns[:current_user]
     invitee = conn.assigns[:invitee]
 
-    if user.id == invitee.user_id do
+    if user.id == invitee.source_user_id do
       conn
     else
       conn

@@ -5,7 +5,7 @@ defmodule Events.Invitees.Invitee do
   schema "invites" do
     belongs_to :event, Events.Users.Event
     belongs_to :user, Events.Admin.User
-    belongs_to :user, Events.Admin.User
+    has_one :user, Events.Admin.User
 
     timestamps()
   end
