@@ -79,7 +79,9 @@ defmodule EventsWeb.InviteeController do
         end
       end
     rescue
-      e in ArgumentError -> IO.inspect(e)
+      err ->
+        IO.puts(Exception.format(:error, err, __STACKTRACE__))
+        {:error, :processing_failed}
     end
   end
 
