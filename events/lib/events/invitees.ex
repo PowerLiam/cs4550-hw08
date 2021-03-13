@@ -23,7 +23,7 @@ defmodule Events.Invitees do
 
   def list_invitees_for_event(event) do
     query = from i in Invitee,
-      where: i.event_id == event.id
+      where: i.event_id == ^event.id
     Repo.all(query) |> Repo.preload([:user, :event])
   end
 
