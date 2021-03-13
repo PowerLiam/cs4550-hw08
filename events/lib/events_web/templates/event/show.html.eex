@@ -75,7 +75,7 @@
   <%= for inv <- @event.invitees do %>
     <div class="card">
       <div class="card-body">
-        <p>Invitee: <%= inv.invited_user.name %></p>
+        <p>Invitee: <%= Admin.get_user!(inv.invited_user_id).name %></p>
       </div>
     </div>
   <% end %>
