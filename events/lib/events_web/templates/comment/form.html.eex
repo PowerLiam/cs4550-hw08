@@ -14,7 +14,7 @@
   <%= hidden_input f, :event_id %>
   <%= hidden_input f, :user_id %>
 
-  <div class="form-control">
+  <div class="btn btn-primary">
     <%= submit "Save" %>
   </div>
 <% end %>

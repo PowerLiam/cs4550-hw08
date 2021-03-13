@@ -5,7 +5,13 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="form-group">
+    <%= label f, :name %>
+    <%= textarea f, :name %>
+    <%= error_tag f, :name %>
+  </div>
+
+  <div class="btn btn-primary">
     <%= submit "Save" %>
   </div>
 <% end %>

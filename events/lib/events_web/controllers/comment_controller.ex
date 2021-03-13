@@ -4,6 +4,10 @@ defmodule EventsWeb.CommentController do
   alias Events.Comments
   alias Events.Comments.Comment
 
+  alias EventsWeb.Plugs
+
+  plug Plugs.RequireUser when action in [:new, :edit, :create, :update]
+
   def index(conn, _params) do
     comments = Comments.list_comments()
     render(conn, "index.html", comments: comments)

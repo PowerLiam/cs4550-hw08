@@ -3,9 +3,9 @@ defmodule Events.Invitees.Invitee do
   import Ecto.Changeset
 
   schema "invites" do
-    field :event_id, :id
-    field :user_id, :id
-    field :source_user_id, :id
+    belongs_to :event, Events.Users.Event
+    belongs_to :user, Events.Admin.User
+    belongs_to :user, Events.Admin.User
 
     timestamps()
   end
@@ -13,7 +13,7 @@ defmodule Events.Invitees.Invitee do
   @doc false
   def changeset(invitee, attrs) do
     invitee
-    |> cast(attrs, [])
-    |> validate_required([])
+    |> cast(attrs, [:event_id, :user_id, :source_user_id])
+    |> validate_required([:event_id, :user_id, :source_user_id])
   end
 end
