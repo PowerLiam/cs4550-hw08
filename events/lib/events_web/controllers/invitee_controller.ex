@@ -85,7 +85,7 @@ defmodule EventsWeb.InviteeController do
             render(conn, "new.html", changeset: changeset)
         end
       else 
-        render(conn, "new.html", %{})
+        render(conn, "new.html", Invitee.changeset(invitee_params))
       end
     rescue
       err ->
