@@ -3,6 +3,8 @@ defmodule EventsWeb.InviteeController do
 
   alias Events.Invitees
   alias Events.Invitees.Invitee
+  alias Events.Users
+  alias Events.Admin
 
   alias EventsWeb.Plugs
 
@@ -48,7 +50,7 @@ defmodule EventsWeb.InviteeController do
     invited_user = Admin.get_user!(invited_user_id)
 
     invitees_for_event = Invitees.list_invitees_for_event(event)
-    invitee_user_ids = Enum.map(fn (invitee) -> invitee.user.id end)
+    invitee_user_ids = Enum.map(invitees_for_event, fn (invitee) -> invitee.user.id end)
 
     current_user_id = conn.assigns[:current_user].id
 
