@@ -18,7 +18,7 @@ defmodule Events.Invitees do
 
   """
   def list_invites do
-    Repo.all(Invitee) |> Repo.preload([:user, :source_user, :event]
+    Repo.all(Invitee) |> Repo.preload([:user, :source_user, :event])
   end
 
   @doc """
