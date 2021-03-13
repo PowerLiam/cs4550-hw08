@@ -85,9 +85,10 @@ defmodule EventsWeb.InviteeController do
             render(conn, "new.html", changeset: changeset)
         end
       else 
-       case Invitees.create_invitee(%{}) do
+        case Invitees.create_invitee(%{}) do
           {:error, %Ecto.Changeset{} = changeset} ->
             render(conn, "new.html", changeset: changeset)
+        end
       end
     rescue
       err ->
