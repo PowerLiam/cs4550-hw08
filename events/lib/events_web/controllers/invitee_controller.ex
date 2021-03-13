@@ -60,14 +60,11 @@ defmodule EventsWeb.InviteeController do
 
       current_user_id = conn.assigns[:current_user].id
 
-      invitee_params = invitee_params
-        |> Map.put("invited_user_id", invited_user.id)
-
       valid = 
         event && 
         invited_user &&
         event.user_id == current_user_id &&
-        !MapSet.member?(MapSet.new(invitee_user_ids), invited_user) &&
+        !MapSet.member?(MapSet.new(invitee_user_ids), invited_user.id) &&
         current_user_id != invited_user.id
 
         IO.puts(event.user_id == current_user_id)
@@ -75,6 +72,9 @@ defmodule EventsWeb.InviteeController do
         IO.puts(current_user_id != invited_user.id)
 
       if valid do
+        invitee_params = invitee_params
+          |> Map.put("invited_user_id", invited_user.id)
+
         case Invitees.create_invitee(invitee_params) do
           {:ok, invitee} ->
             conn
